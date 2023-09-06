@@ -26,6 +26,11 @@
   color: black;
 }
 
+.side-bar-ul-subtitle:hover {
+  color: grey;
+  text-decoration: underline;
+}
+
 .side-bar-ul-subtitle-li {
   font-size: 16px;
   color: black;
@@ -35,6 +40,7 @@
   font-size: 16px;
   color: grey;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 /* pagination */

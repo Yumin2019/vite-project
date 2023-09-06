@@ -1,114 +1,34 @@
 import "../css/App.css";
 
-export function SideBar() {
-  const subtitle = "side-bar-ul-subtitle";
-  const subtitle_li = "side-bar-ul-subtitle-li";
-
+const SideBar = ({ menu }) => {
   return (
     <>
-      {/* sidebar */}
       <aside className="side-bar">
         <ul className="side-bar-ul">
-          <li className="side-bar-ul container">
-            <a className={subtitle} href="#">
-              test
-            </a>
-            <ul>
-              <li>
-                <a className={subtitle_li} href="#">
-                  text1
+          {/* 상단 메뉴 */}
+          {menu.subtitles.data.map((value, index) => {
+            return (
+              <li className="side-bar-ul container" key={index}>
+                <a className={"side-bar-ul-subtitle"} href="#">
+                  {value.title}
                 </a>
+                <ul>
+                  {/* 하단 메뉴 */}
+                  {value.menus.map((name, index) => {
+                    return (
+                      <li key={index}>
+                        <a className="side-bar-ul-subtitle-li">name</a>
+                      </li>
+                    );
+                  })}
+                </ul>
               </li>
-              <li>
-                <a className={subtitle_li} href="#">
-                  text1
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li className="side-bar-ul container">
-            <a className={subtitle} href="#">
-              menu2
-            </a>
-            <ul>
-              <li>
-                <a className={subtitle_li} href="#">
-                  text1
-                </a>
-              </li>
-              <li>
-                <a className={subtitle_li} href="#">
-                  text2
-                </a>
-              </li>
-              <li>
-                <a className={subtitle_li} href="#">
-                  text3(10)
-                </a>
-              </li>
-              <li>
-                <a className={subtitle_li} href="#">
-                  text4
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li className="side-bar-ul container">
-            <a className={subtitle} href="#">
-              menu3
-            </a>
-            <ul>
-              <li>
-                <a className={subtitle_li} href="#">
-                  text1
-                </a>
-              </li>
-              <li>
-                <a className={subtitle_li} href="#">
-                  text2
-                </a>
-              </li>
-              <li>
-                <a className={subtitle_li} href="#">
-                  text3
-                </a>
-              </li>
-              <li>
-                <a className={subtitle_li} href="#">
-                  text4
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li className="side-bar-ul container">
-            <a className={subtitle} href="#">
-              menu4
-            </a>
-            <ul>
-              <li>
-                <a className={subtitle_li} href="#">
-                  text1
-                </a>
-              </li>
-              <li>
-                <a className={subtitle_li} href="#">
-                  text2
-                </a>
-              </li>
-              <li>
-                <a className={subtitle_li} href="#">
-                  text3
-                </a>
-              </li>
-              <li>
-                <a className={subtitle_li} href="#">
-                  text4
-                </a>
-              </li>
-            </ul>
-          </li>
+            );
+          })}
         </ul>
       </aside>
     </>
   );
-}
+};
+
+export default SideBar;
