@@ -62,7 +62,7 @@ const BlogMain = () => {
 
   return (
     <>
-      {/* Navigation */}
+      {/* 상단 메뉴 */}
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <div className="d-flex flex-grow-1">
@@ -76,8 +76,17 @@ const BlogMain = () => {
             className="collapse navbar-collapse flex-grow-1 text-right"
             id="myNavbar7"
           >
-            {/* ITEM 1 */}
+            {/* 상단 우측 버튼 */}
             <ul className="navbar-nav ms-auto flex-nowrap">
+              <li className="nav-item">
+                <Link
+                  to={"/editConfig"}
+                  className="nav-link m-2 menu-item nav-active"
+                >
+                  블로그 편집
+                </Link>
+              </li>
+
               <li className="nav-item">
                 <Link
                   to={"/login"}
@@ -87,7 +96,6 @@ const BlogMain = () => {
                 </Link>
               </li>
 
-              {/* ITEM 2 */}
               <li className="nav-item">
                 <Link
                   to={"/register"}
@@ -101,6 +109,7 @@ const BlogMain = () => {
         </div>
       </nav>
 
+      {/* 좌측 사이드바 */}
       <SideBar menu={config.menu} />
 
       <div
