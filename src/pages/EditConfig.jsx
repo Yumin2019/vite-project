@@ -1,7 +1,121 @@
 import Form from "react-bootstrap/Form";
 import "../css/App.css";
+import { Tree } from "react-arborist";
+import { useState } from "react";
 
-/*
+const EditConfig = () => {
+  console.log("LoginForm");
+
+  const [menu, setMenu] = useState([
+    { id: "1", parentId: "null", name: "Menu1", children: [] },
+    { id: "2", parentId: "null", name: "Menu2", children: [] },
+    {
+      id: "3",
+      parentId: "null",
+      name: "Menu3",
+      children: [
+        { id: "4", parentId: "3", name: "A" },
+        { id: "5", parentId: "3", name: "B" },
+      ],
+    },
+  ]);
+
+  const onChange = (e) => {
+    const img = e.target.files[0];
+    console.log(img);
+    const formData = new FormData();
+    formData.append("file", img);
+  };
+
+  function Node({ node, style, dragHandle }) {
+    /* This node instance can do many things. See the API reference. */
+    return (
+      <div style={style} ref={dragHandle} onClick={() => node.toggle()}>
+        {node.isLeaf ? "•" : "📂"} {node.data.name}
+      </div>
+    );
+  }
+
+  /* Handle the data modifications outside the tree component */
+  const onCreate = ({ parentId, index, type }) => {};
+  const onRename = ({ id, name }) => {};
+  const onMove = ({ dragIds, parentId, index }) => {
+    console.log("dragId " + dragIds + " parentId " + parentId + " " + index);
+    // 처리한 요소를 찾는다.
+  };
+  const onDelete = ({ ids }) => {};
+
+  // 데이터를 가져오는 상황에서 현재 개수도 알아와야 한다.
+  // 또한 상위 폴더와 하위 뎁스로 나누는 것도 가능해야 한다.
+  // 이러한 변경사항을 확인을 누를 떄 처리할 수 있어야 한다.
+  // 메뉴 이름을 바꾸는 경우에 어떻게 처리할 지
+  // 메뉴 자체를 삭제 하는 경우
+  // 추가하는 경우
+
+  // 계층이 변화하는 경우, 아이콘을 바꾼다.
+
+  return (
+    <div style={{ width: 500, margin: `0 auto`, padding: `50px 0px` }}>
+      <h1>블로그 편집</h1>
+      <div style={{ marginTop: 25 }} />
+      {/* 블로그 이름 */}
+      <Form.Label htmlFor="inputTitle">Blog Name</Form.Label>
+      <Form.Control type="email" id="inputEmail" />
+      <div style={{ marginTop: 5 }} />
+      <Form.Text muted>블로그 이름을 입력해주세요.</Form.Text>
+      <div style={{ marginTop: 15 }} />
+      {/* 하단 Fotter 텍스트*/}
+      <Form.Label htmlFor="inputPassword">Footer Text</Form.Label>
+      <Form.Control id="inputPassword" aria-describedby="passwordHelpBlock" />
+      <div style={{ marginTop: 5 }} />
+      <Form.Text muted>Footer에 사용할 문구를 입력하세요.</Form.Text>
+
+      {/* <div style={{ marginTop: 30 }} />
+      <h3>글 메뉴 편집</h3>
+      <div
+        style={{
+          backgroundColor: "#527F52",
+          color: "white",
+          border: `solid 8px #B68D5D`,
+          padding: "5px 10px",
+        }}
+      >
+        <Tree
+          data={menu}
+          height={250}
+          openByDefault={true}
+          indent={32}
+          onMove={onMove}
+        >
+          {Node}
+        </Tree>
+      </div> */}
+
+      <div>
+        <input
+          type="file"
+          accept="image/*"
+          name="profileImg"
+          onChange={onChange}
+        ></input>
+      </div>
+
+      <div style={{ marginTop: 10 }} />
+      {/* 로그인 버튼 */}
+      <button
+        type="button"
+        class="btn btn-dark"
+        style={{ width: 500, marginTop: 30 }}
+      >
+        변경사항 저장
+      </button>
+    </div>
+  );
+};
+
+export default EditConfig;
+
+/* 
 
 const config = {
     // Config로 가져와야 할 정보
@@ -58,46 +172,3 @@ const config = {
     },
   };
 */
-
-const EditConfig = () => {
-  console.log("LoginForm");
-
-  return (
-    <div style={{ width: 500, margin: `0 auto`, padding: `50px 0px` }}>
-      <h1>블로그 편집</h1>
-      <div style={{ marginTop: 25 }} />
-
-      {/* 블로그 이름 */}
-      <Form.Label htmlFor="inputTitle">Blog Name</Form.Label>
-      <Form.Control type="email" id="inputEmail" />
-      <div style={{ marginTop: 5 }} />
-      <Form.Text muted>블로그 이름을 입력해주세요.</Form.Text>
-      <div style={{ marginTop: 15 }} />
-
-      {/* 하단 Fotter 텍스트*/}
-      <Form.Label htmlFor="inputPassword">Footer Text</Form.Label>
-      <Form.Control id="inputPassword" aria-describedby="passwordHelpBlock" />
-      <div style={{ marginTop: 5 }} />
-      <Form.Text muted>Footer에 사용할 문구를 입력하세요.</Form.Text>
-
-      {/* 로그인 상태 유지 여부 */}
-      <div style={{ marginTop: 10 }} />
-
-      {/* 로그인 버튼 */}
-      <button
-        type="button"
-        class="btn btn-dark"
-        style={{ width: 500, marginTop: 30 }}
-      >
-        로그인
-      </button>
-
-      <div style={{ marginTop: 10 }}>
-        <div style={{ float: "right" }}>회원가입</div>
-        <div style={{ float: "right", marginRight: 15 }}>비밀번호 찾기</div>
-      </div>
-    </div>
-  );
-};
-
-export default EditConfig;

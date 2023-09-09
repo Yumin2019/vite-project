@@ -80,6 +80,14 @@ const BlogMain = () => {
             <ul className="navbar-nav ms-auto flex-nowrap">
               <li className="nav-item">
                 <Link
+                  to={"/editProfile"}
+                  className="nav-link m-2 menu-item nav-active"
+                >
+                  프로필 편집
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
                   to={"/editConfig"}
                   className="nav-link m-2 menu-item nav-active"
                 >

@@ -8,11 +8,11 @@ const RegisterForm = () => {
       <h1>회원가입</h1>
       <div style={{ marginTop: 25 }} />
 
-      {/* 이메일 폼 */}
-      <Form.Label htmlFor="inputEmail">Email</Form.Label>
-      <Form.Control type="email" id="inputEmail" />
+      {/* 아이디 폼 */}
+      <Form.Label htmlFor="inputId">ID</Form.Label>
+      <Form.Control id="inputId" />
       <div style={{ marginTop: 5 }} />
-      <Form.Text muted>이메일을 입력해주세요.</Form.Text>
+      <Form.Text muted>아이디를 입력해주세요.</Form.Text>
       <div style={{ marginTop: 15 }} />
 
       {/* 비밀번호 폼 */}
@@ -37,10 +37,16 @@ const RegisterForm = () => {
       <div style={{ marginTop: 5 }} />
       <Form.Text muted>비밀번호를 한번 더 입력하세요.</Form.Text>
 
-      {/* 로그인 상태 유지 여부 */}
-      <div style={{ marginTop: 10 }} />
+      {/* 이메일 폼 */}
+      <div style={{ marginTop: 15 }} />
+      <Form.Label htmlFor="inputEmail">Email</Form.Label>
+      <Form.Control type="email" id="inputEmail" />
+      <div style={{ marginTop: 5 }} />
+      <Form.Text muted>
+        이메일을 입력해주세요. 비밀번호 분실 시 사용됩니다.
+      </Form.Text>
 
-      {/* 로그인 버튼 */}
+      {/* 회원가입 버튼 */}
       <button
         type="button"
         class="btn btn-dark"

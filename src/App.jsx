@@ -4,6 +4,7 @@ import LoginForm from "./pages/LoginForm";
 import { Route, Routes } from "react-router-dom";
 import RegisterForm from "./pages/RegisterForm";
 import EditConfig from "./pages/EditConfig";
+import EditProfile from "./pages/EditProfile";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/editConfig" element={<EditConfig />} />
+        <Route path="/editProfile" element={<EditProfile />} />
       </Routes>
     </>
   );
