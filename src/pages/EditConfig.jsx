@@ -1,10 +1,14 @@
 import Form from "react-bootstrap/Form";
 import "../css/App.css";
-import { Tree } from "react-arborist";
 import { useState } from "react";
+import AddFrontImage from "./../component/AddFrontImage";
+import BootModal from "../component/BootModal";
 
 const EditConfig = () => {
   console.log("LoginForm");
+
+  const [bookList, setBookList] = useState([]);
+  const [modalShow, setModalShow] = useState(false);
 
   const [menu, setMenu] = useState([
     { id: "1", parentId: "null", name: "Menu1", children: [] },
@@ -20,11 +24,13 @@ const EditConfig = () => {
     },
   ]);
 
-  const onChange = (e) => {
-    const img = e.target.files[0];
-    console.log(img);
-    const formData = new FormData();
-    formData.append("file", img);
+  const AddButtonClicked = () => {
+    if (bookList.length >= 3) {
+      setModalShow(true);
+      return;
+    }
+    const list = [...bookList, <AddFrontImage key={bookList.length} />];
+    setBookList(list);
   };
 
   function Node({ node, style, dragHandle }) {
@@ -90,15 +96,24 @@ const EditConfig = () => {
           {Node}
         </Tree>
       </div> */}
+      <div style={{ marginTop: 35 }} />
+      <button
+        type="button"
+        class="btn btn-outline-info"
+        style={{ width: 500 }}
+        onClick={AddButtonClicked}
+      >
+        메인 페이지 책 소개 추가
+      </button>
 
-      <div>
-        <input
-          type="file"
-          accept="image/*"
-          name="profileImg"
-          onChange={onChange}
-        ></input>
-      </div>
+      <BootModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        title="알림"
+        message="최대 3개까지 추가할 수 있습니다."
+      />
+
+      {bookList}
 
       <div style={{ marginTop: 10 }} />
       {/* 로그인 버튼 */}
